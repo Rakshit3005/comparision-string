@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long int;
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        ;
+        cin >> n;
+        string s;
+        cin >> s;
+        vector<int> v;
+        for (int i = 0; i < n - 1; i++)
+        {
+            if (s[i] != s[i + 1])
+            {
+                v.push_back(i);
+            }
+        }
+        if (v.size() == 0)
+        {
+            cout << n+1 << endl;
+        }
+        else
+        {
+            vector<int> v1;
+            v1.push_back(v[0]+1);
+            if(v.size()!=1)
+            {
+            for (int i = 1; i < v.size(); i++)
+            {
+                v1.push_back(v[i] - v[i - 1]);
+            }
+            }
+        
+                v1.push_back(n-1-v[v.size() - 1]);
+            
+            int max = v1[0];
+            int ans = v1[0] + 1;
+            for (int i = 0; i < v1.size(); i++)
+            {
+                if (v1[i] > max)
+                {
+                    ans += (v1[i] - max);
+                    max = v1[i];
+                }
+            }
+            cout << ans << endl;
+        }
+    }
+    return 0;
+}
